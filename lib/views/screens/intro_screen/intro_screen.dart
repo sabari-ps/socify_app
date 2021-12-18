@@ -10,7 +10,6 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageCtrl = Get.put(PageViewControllerClass());
-
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -26,11 +25,7 @@ class IntroScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {
                     storageCtrl.storage.write('initialRun', false);
-                    routesCtrl.gotoScreen(
-                      toScreen: '/welcome',
-                      isBackable: false,
-                      isTimeout: false,
-                    );
+                    Get.offNamed('/welcome');
                   },
                   child: Text(
                     "Skip",

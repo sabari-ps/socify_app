@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:socify_app/configs/app_theme.dart';
 import 'package:socify_app/main.dart';
 import 'package:socify_app/views/screens/signup_screen/controller/signup_controller.dart';
-import 'package:socify_app/views/screens/signup_screen/widgets/custom_button.dart';
+import 'package:socify_app/views/widgets/custom_button.dart';
 import 'package:socify_app/views/screens/signup_screen/widgets/text_field_signup.dart';
 import 'package:socify_app/views/screens/signup_screen/widgets/text_widget.dart';
 
@@ -61,6 +61,9 @@ class SignupScreen extends StatelessWidget {
               CustomTextField(
                 signUpController: signupCtrl,
               ),
+              const SizedBox(
+                height: 16.0,
+              ),
               customButton(
                 context,
                 text: (signupCtrl.stepsCompleted.value < 3)
@@ -71,11 +74,7 @@ class SignupScreen extends StatelessWidget {
                     : Icons.people_alt,
                 onClick: () {
                   if (signupCtrl.stepsCompleted.value == 3) {
-                    routesCtrl.gotoScreen(
-                      toScreen: '/welcome',
-                      isBackable: false,
-                      isTimeout: false,
-                    );
+                    Get.toNamed('/enterNumber');
                   } else {
                     signupCtrl.stepsCompleted.value++;
                   }

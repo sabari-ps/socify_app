@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:socify_app/configs/app_theme.dart';
 import 'package:socify_app/main.dart';
-import 'package:socify_app/views/screens/welcome_screen/widgets/custom_button.dart';
 import 'package:socify_app/views/screens/welcome_screen/widgets/custom_text_widget.dart';
+import 'package:socify_app/views/widgets/custom_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -38,7 +37,6 @@ class WelcomeScreen extends StatelessWidget {
               onClick: routesCtrl.gotoScreen(
                 toScreen: '/login',
                 isBackable: true,
-                isTimeout: false,
               ),
             ),
             customButton(
@@ -48,7 +46,6 @@ class WelcomeScreen extends StatelessWidget {
               onClick: routesCtrl.gotoScreen(
                 toScreen: '/signup',
                 isBackable: true,
-                isTimeout: false,
               ),
             ),
           ],

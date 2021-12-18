@@ -7,21 +7,16 @@ class RoutesControllerClass extends GetxController {
         const Duration(milliseconds: 3000),
         (storageCtrl.storage.read('initialRun') ?? true)
             ? () => Get.offNamed('/intro')
-            : () => Get.offNamed('/welcome'),
+            : (storageCtrl.storage.read('loggedIn') ?? false)
+                ? () => Get.offNamed('/home')
+                : () => Get.offNamed('/welcome'),
       );
   gotoScreen({
     required String toScreen,
     required bool isBackable,
-    required bool isTimeout,
     int? duration,
   }) =>
-      (isTimeout)
-          ? (isBackable)
-              ? Timer(Duration(milliseconds: duration!),
-                  () => Get.toNamed(toScreen))
-              : Timer(Duration(milliseconds: duration!),
-                  () => Get.offNamed(toScreen))
-          : (isBackable)
-              ? () => Get.toNamed(toScreen)
-              : () => Get.offAllNamed(toScreen);
+      (isBackable)
+          ? () => Get.toNamed(toScreen)
+          : () => Get.offAllNamed(toScreen);
 }
